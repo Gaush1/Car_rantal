@@ -32,18 +32,19 @@ class CompanyAuthController extends Controller
     ]);
 
     // Create a new Company record in the database
-    $user = new Companye();
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->username = $request->username;
-    $user->phone = $request->phone;
-    $user->password = Hash::make($request->password); // Hash the password
-    $user->cname = $request->cname;
-    $user->city = $request->city;
-    $user->token = $token;
-    $user->save();
+    $company = new Companye();
+    $company->name = $request->name;
+    $company->email = $request->email;
+    $company->username = $request->username;
+    $company->phone = $request->phone;
+    $company->password = Hash::make($request->password); // Hash the password
+    $company->cname = $request->cname;
+    $company->city = $request->city;
+    $company->token = $token;
+    $company->save();
 
-    $verificationLink = url('/verify/' . $token . '/' . $request->email . '/');
+       
+    $verificationLink = url('/verifyCompany/' . $token . '/' . $request->email . '/');
         $mailSubject = 'Car-Rental Registration Verification Link';
         $userData = [
             'name' => $request->name,
@@ -59,30 +60,30 @@ class CompanyAuthController extends Controller
 }
 
 public function verifyAccountCompany($token, $email)
-{
-    //now we write our logic to empty the token and update the status as active
-    $user = Companye::where('token', $token)->first();
-    // ->where('email', $email)
-    if (!$user) {
-        // if the user not exist means token is not exist or invaild token
-        dd('user not found or invalid token');
+    {
+        //now we write our logic to empty the token and update the status as active
+        $user = Companye::where('token', $token)->first();
+        // ->where('email', $email)
+        if (!$user) {
+            // if the user not exist means token is not exist or invaild token
+            dd('user not found or invalid token');
+        }
+        //else user found
+        else {
+            $user->token = ''; //empty user token
+            $user->status = 'active';
+            $user->update();
+        }
+        Auth::guard('companye')->login($user);
+        return redirect()->route('company.dashbord');
+        // return view('frontend/companydashbord');
     }
-    //else user found
-    else {
-        $user->token = ''; //empty user token
-        $user->status = 'active';
-        $user->update();
+
+    public function login(){
+        return view('frontend/corporatelogin');
     }
-    Auth::login($user);
-    // return redirect()->route('company.dashbord');
-    return view("frontend/companydashbord");
-}
 
-public function login(){
-    return view('frontend/corporatelogin');
-}
-
-public function loginSubmitCompany(Request $request)
+    public function loginSubmitCompany(Request $request)
 {
     $request->validate([
         'email' => 'required|email',
@@ -96,14 +97,12 @@ public function loginSubmitCompany(Request $request)
         ];
 
         if (Auth::guard('companye')->attempt($credentials)) {
-            $user = Auth::user(); // Retrieve the authenticated company user
-
+            $user = Auth::guard('companye')->user(); // Use the 'companye' guard
             if ($user->status == 'active') {
                 session()->flash('success', 'Welcome back');
-                return view('frontend/corporatelogin');
-                // return redirect()->route('company.dashbord');
+                return redirect()->route('company.dashbord');
             } else {
-                Auth::logout();
+                Auth::guard('companye')->logout(); // Logout from the 'companye' guard
                 session()->flash('error', 'Email address has not been verified. Please check your inbox for a verification email');
                 return redirect()->route('login_company');
             }
@@ -116,6 +115,7 @@ public function loginSubmitCompany(Request $request)
         return redirect()->back();
     }
 }
+
 
 public function dashbordcompany(){
 

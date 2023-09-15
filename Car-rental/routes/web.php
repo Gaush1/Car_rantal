@@ -38,7 +38,11 @@ Route::get('/register',[RegisterController::class,'index'])->name('register');
 Route::post('/register',[RegisterController::class,'register'])->name('register_submit');
 Route::get('/login', [RegisterController::class, 'login'])->name('login');
 Route::post('/login', [RegisterController::class, 'loginSubmit'])->name('login_submit');
-Route::get('/dashboard', [RegisterController::class, 'dashboard'])->name('dashboard')->middleware(['auth','verified']);
+
+Route::middleware(['web', 'auth:web'])->group(function () {
+Route::get('/dashboard', [RegisterController::class, 'dashboard'])->name('dashboard');
+});
+// ->middleware(['auth','verified']);
  Route::get('/logout',[RegisterController::class, 'logout'])->name('logout');
 Route::get('/verify/{token}/{email}', [RegisterController::class, 'verifyAccount'])->name('verify_account');
 // Route::get('/login',[LoginController::class,'index'])->name('login');
@@ -76,10 +80,18 @@ Route::get('/index/company',function(){
 // });
 Route::get('/company/register', [CompanyAuthController::class,'index'])->name("company.register");
 Route::post('/company/register', [CompanyAuthController::class,'register'])->name("company.register.submit");
-Route::get('/dashbord/company',[CompanyAuthController::class,'dashbordcompany'])->name('company.dashbord')->middleware(['','verified']);;
+Route::get('/verifyCompany/{token}/{email}', [CompanyAuthController::class, 'verifyAccountCompany'])->name('verify_account_company');
+
+// ->middleware('auth:companye');
+// ->middleware(['auth']);
 // 
-Route::get('/verify/{token}/{email}', [CompanyAuthController::class, 'verifyAccountCompany'])->name('verify_account_company');
+Route::middleware(['web', 'auth:companye'])->group(function () {
+    // Your routes that require authentication
+    Route::get('/dashbord/company',[CompanyAuthController::class,'dashbordcompany'])->name('company.dashbord');
+});
 Route::get('/company/login', [CompanyAuthController::class, 'login'])->name('login_company');
-Route::post('/company/login', [CompanyAuthController::class, 'loginSubmitCompany'])->name('login_submit_company');
+
+Route::post('/company/login', [CompanyAuthController::class,'loginSubmitCompany'])->name('login_submit_company');
+
 Route::get('/logout/company',[CompanyAuthController::class, 'logout'])->name('logout_company');
 

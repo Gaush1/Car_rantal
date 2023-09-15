@@ -101,7 +101,7 @@
 
                                         <div id="de-submenu-profile" class="de-submenu">
                                             <div class="d-name">
-                                                <h4>{{ Auth::user()->name }} </h4>
+                                                <h4>{{ Auth::user()->name }}</h4>
                                                 <span class="text-gray">{{ Auth::user()->email }} </span>
                                             </div>
 

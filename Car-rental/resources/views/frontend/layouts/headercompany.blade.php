@@ -86,7 +86,7 @@
                             </div>
                             <div class="de-flex-col">
                                 <div class="menu_side_area">
-                                    <a href="/login" class="btn-main">Sign In</a>
+                                    <a href="{{route('login_company')}}" class="btn-main">Sign In</a>
                                     <span id="menu-btn"></span>
                                 </div>
                                 <div class="menu_side_area">

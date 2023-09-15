@@ -24,7 +24,7 @@
                                     </div>
                                 @endif
                                 <form class="form-border" method="post" action='{{ route('login_submit_company') }}'>
-                                    @csrf
+                                   @csrf
                                     <div class="field-set">
                                         <input type="text" name="email" class="form-control" placeholder="Your Email"
                                             required autocomplete="off" />

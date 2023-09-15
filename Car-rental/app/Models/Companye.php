@@ -3,15 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Contracts\Auth\Authenticatable;
+// use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 
-class Companye extends Model implements Authenticatable
+class Companye extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, AuthenticatableTrait;
+    use HasApiTokens, HasFactory, Notifiable;
+    
     protected $fillable = [
         'name',
         'email',

@@ -95,7 +95,8 @@ class RegisterController extends Controller
             ];
 
             if (Auth::attempt($credentials)) {
-                $user = Auth::user();
+                // $user = Auth::user();
+                $user = auth()->user();
                 if ($user->status == 'active') {
                    session()->flash('success','welcome back');
                     return redirect()->route('dashboard');

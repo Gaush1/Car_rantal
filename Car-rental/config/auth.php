@@ -40,14 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'companye' => [
+            'driver' => 'session', // or 'token' if you prefer
+            'provider' => 'companyes', // Make sure the provider name is correct
+        ],
         'admin' => [
             'driver' => 'session', // You can use 'session' or 'token' as the driver
             'provider' => 'admins', // Specify the admin user provider
         ],
-        'companye' => [
-            'driver' => 'session',
-            'provider' => 'companyes', 
-        ],
+       
     ],
     
     /*
@@ -73,14 +74,16 @@ return [
             'model' => App\Models\User::class,
         ],
 
+        'companyes' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Companye::class, // Update with your actual Companye model class
+        ],
+
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class, // Update with your Admin model class
         ],
-        'companyes' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Companye::class, // Update with your Company model class
-        ],
+      
     ],
 
     /*
