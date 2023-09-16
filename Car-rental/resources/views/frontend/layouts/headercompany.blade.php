@@ -71,7 +71,7 @@
                             </div>
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
-                                    <li><a class="menu-item" href="/">Home</a>
+                                    {{-- <li><a class="menu-item" href="/">Home</a> --}}
                                     </li>
                                     <li><a class="menu-item" href="/cars">Cars</a>
                                     </li>

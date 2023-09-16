@@ -49,9 +49,14 @@ Route::get('/verify/{token}/{email}', [RegisterController::class, 'verifyAccount
 
 //User Dashboard Pages
 // Route::get('/dashboard/myprofile',[AccountDashboardController::class,'showProfile'])->name('show_profile');
-Route::get('/dashboard/profile',function(){
-      return view('frontend/account-profile');
-});
+// Route::get('/dashboard/profile',function(){
+//       return view('frontend/account-profile');
+// });
+
+Route::get('/dashboard/profile', [RegisterController::class, 'editProfile'])->name('user.profile.edit');
+Route::post('/dashboard/profile/update', [RegisterController::class, 'updateProfile'])->name('user.profile.update');
+
+
 Route::get('/dashboard/myorder', function(){
     return view('frontend/account-booking');
 });
@@ -94,4 +99,8 @@ Route::get('/company/login', [CompanyAuthController::class, 'login'])->name('log
 Route::post('/company/login', [CompanyAuthController::class,'loginSubmitCompany'])->name('login_submit_company');
 
 Route::get('/logout/company',[CompanyAuthController::class, 'logout'])->name('logout_company');
+
+Route::get('/dashbord/company/profile', [CompanyAuthController::class, 'editProfileCompany'])->name('company.profile.edit');
+Route::post('/dashbord/company/update', [CompanyAuthController::class, 'updateProfileCompany'])->name('company.profile.update');
+
 

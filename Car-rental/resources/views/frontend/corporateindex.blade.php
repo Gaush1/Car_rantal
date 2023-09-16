@@ -10,7 +10,7 @@
                         <div class="col-lg-12 text-light">
                             <div class="spacer-double"></div>
                             <div class="spacer-double"></div>
-                            <h1 class="mb-2">Looking for a <span class="id-color">B2B vehicle Partnership</span></h1>
+                            <h1 class="mb-2">Looking for a <span class="id-color">B2B vehicle Partnership?</span></h1>
                             <div class="spacer-single"></div>
                         </div>
 

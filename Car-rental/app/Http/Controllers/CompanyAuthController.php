@@ -132,6 +132,40 @@ public function logout(){
     }
 }
 
+public function editProfileCompany(){
+    $user = Auth::guard('companye')->user();
+    return view('frontend/company-profile', compact('user'));
+}
 
+public function updateProfileCompany(Request $request)
+{
+    $user = Auth::guard('companye')->user();
+    // Retrieve the currently authenticated user
 
+    // Validate the form input
+    $request->validate([
+
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:companyes',
+        'username' => 'required|string|max:255|unique:companyes',
+        'phone' => 'required|string|max:255|min:10|unique:companyes',
+        'password' => 'required|string|min:8',
+        're-password' => 'required|same:password',
+        'cname' => 'required|string|max:255',
+        'city' => 'required|string|max:255',
+    ]);
+
+    // Update user data
+    $user->update([
+        'name' => $request->input('name'),
+        'email' => $request->input('email'),
+        'username' => $request->input('username'),
+        'phone' => $request->input('phone'),
+        'password' => $request->has('password') ? bcrypt($request->input('password')) : $user->password,
+        'cname' => $request->input('cname'),
+        'city' => $request->input('city'),
+        ]);
+
+    return redirect()->route('company.profile.edit')->with('success', 'Profile updated successfully.');
+}
 }

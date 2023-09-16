@@ -54,8 +54,6 @@ class RegisterController extends Controller
         // return "Registered Succesfully. A verification Email will be send to your email Address".$request->email."Please Click on the click to verify";
         return view('frontend/registermailpage')->with($userData) ;
        
-        // return redirect()->route('dashboard');
-        // return redirect('/account-dashboard');
         }
 
         // new method to verify user account
@@ -129,4 +127,36 @@ class RegisterController extends Controller
             //show error message
         }
     }
+
+    public function editProfile(){
+        $user = auth()->user();
+        return view('frontend/account-profile', compact('user'));
+    }
+
+    public function updateProfile(Request $request)
+{
+    $user = auth()->user(); // Retrieve the currently authenticated user
+
+    // Validate the form input
+    $request->validate([
+
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users',
+            'phone' => 'nullable|string|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            're-password' => 'required|same:password',
+    ]);
+
+    // Update user data
+    $user->update([
+        'name' => $request->input('name'),
+        'username' => $request->input('username'),
+        'email' => $request->input('email'),
+        'phone' => $request->input('phone'),
+        'password' => $request->has('password') ? bcrypt($request->input('password')) : $user->password,
+        ]);
+
+    return redirect()->route('user.profile.edit')->with('success', 'Profile updated successfully.');
+}
 }

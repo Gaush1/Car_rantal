@@ -50,34 +50,43 @@
                             <div class="card p-4  rounded-5">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <form id="form-create-item" class="form-border" method="post" action="">
+                                        <form id="form-create-item" class="form-border" method="post" action="{{route('user.profile.update')}}">
+                                            @csrf
                                         <div class="de_tab tab_simple">
                                         
                                             <ul class="de_nav">
                                                 <li class="active"><span>Profile</span></li>
-                                                <li><span>Notifications</span></li>
                                             </ul>
                                             
                                             <div class="de_tab_content">                            
                                                 <div class="tab-1">
+
                                                     <div class="row">
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Name</h5>
+                                                            <input type="text" name="name" id="username" class="form-control" placeholder="Enter name" />
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Email Address</h5>
+                                                            <input type="text" name="email" id="email_address" class="form-control" placeholder="Enter email" />
+                                                        </div>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>Username</h5>
                                                             <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" />
                                                         </div>
                                                         <div class="col-lg-6 mb20">
-                                                            <h5>Email Address</h5>
-                                                            <input type="text" name="email_address" id="email_address" class="form-control" placeholder="Enter email" />
+                                                            <h5>Phone No.</h5>
+                                                            <input type="text" name="phone" id="username" class="form-control" placeholder="Enter username" />
                                                         </div>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>New Password</h5>
-                                                            <input type="Password" name="user_password" id="user_password" class="form-control" placeholder="********" />
+                                                            <input type="Password" name="password" id="user_password" class="form-control" placeholder="********" />
                                                         </div>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>Re-enter Password</h5>
-                                                            <input type="Password" name="user_password_re-enter" id="user_password_re-enter" class="form-control" placeholder="********" />
+                                                            <input type="Password" name="re-password" id="user_password_re-enter" class="form-control" placeholder="********" />
                                                         </div>
-                                                        <div class="col-md-6 mb20">
+                                                        {{-- <div class="col-md-6 mb20">
                                                             <h5>Language</h5>
                                                             <p class="p-info">Select your prefered language.</p>
                                                             <div id="select_lang" class="dropdown fullwidth">
@@ -101,71 +110,25 @@
                                                                     <li><span>12-hour</span></li>
                                                                 </ul>
                                                             </div>
-                                                        </div>                               
-                                                    </div>
-                                                </div>
-
-                                                <div class="tab-2">
-                                                    <div class="row">
-                                                        <div class="col-md-6 mb-sm-20">
-                                                            <div class="switch-with-title s2">
-                                                                <h5>Discount Notifications</h5>
-                                                                <div class="de-switch">
-                                                                  <input type="checkbox" id="notif-item-sold" class="checkbox">
-                                                                  <label for="notif-item-sold"></label>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <p class="p-info">You'll get notification while new discount available.</p>
-                                                            </div>
-
-                                                            <div class="spacer-20"></div>
-
-                                                            <div class="switch-with-title s2">
-                                                                <h5>New Product Notification</h5>
-                                                                <div class="de-switch">
-                                                                  <input type="checkbox" id="notif-bid-activity" class="checkbox">
-                                                                  <label for="notif-bid-activity"></label>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <p class="p-info">You'll get notification while new product available.</p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="switch-with-title s2">
-                                                                <h5>Daily Reports</h5>
-                                                                <div class="de-switch">
-                                                                  <input type="checkbox" id="notif-auction-expiration" class="checkbox">
-                                                                  <label for="notif-auction-expiration"></label>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <p class="p-info">We will send you a report everyday.</p>
-                                                            </div>
-
-                                                            <div class="spacer-20"></div>
-
-                                                            <div class="switch-with-title s2">
-                                                                <h5>Monthly Reports</h5>
-                                                                <div class="de-switch">
-                                                                  <input type="checkbox" id="notif-outbid" class="checkbox">
-                                                                  <label for="notif-outbid"></label>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                                <p class="p-info">We will send you a report each month.</p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="spacer-20"></div>
+                                                        </div>                                --}}
                                                     </div>
                                                 </div>
 
                                             </div>
                                         </div>
 
-                                        <input type="button" id="submit" class="btn-main" value="Update profile">
+                                        <input type="submit" id="submit" class="btn-main" value="Update profile">
                                         </form>
+                                        @if (session('success'))
+                                          <div class="alert alert-success">
+                                             {{ session('success') }}
+                                          </div>
+                                        @endif
+                                        @if (session('error'))
+                                          <div class="alert alert-danger">
+                                             {{ session('error') }}
+                                          </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

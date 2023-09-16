@@ -79,7 +79,7 @@
                                     <li><a class="menu-item" href="">My Account</a>
                                         <ul>
                                             <li><a class="menu-item" href="{{url('/dashbord/company')}}">Dashboard</a></li>
-                                            <li><a class="menu-item" href="{{route('company.profile.edit')}}">My Profile</a></li>
+                                            <li><a class="menu-item" href="{{url('/dashboard/profile')}}">My Profile</a></li>
                                             <li><a class="menu-item" href="{{url('/dashboard/myorder')}}">My Orders</a></li>
                                         </ul>
                                     </li>
@@ -101,15 +101,15 @@
 
                                         <div id="de-submenu-profile" class="de-submenu">
                                             <div class="d-name">
-                                                <h4>{{ Auth::guard('companye')->user()->name}}</h4>
-                                                <span class="text-gray">{{ Auth::user()->email }} </span>
+                                                <h4>{{ Auth::guard('companye')->user()->name }}</h4>
+                                                <span class="text-gray">{{ Auth::guard('companye')->user()->email }} </span>
                                             </div>
 
                                             <div class="d-line"></div>
 
                                             <ul class="menu-col">
                                                 <li><a href="{{url('/dashbord/company')}}"><i class="fa fa-home"></i>Dashboard</a></li>
-                                                <li><a href="{{route('company.profile.edit')}}"><i class="fa fa-user"></i>My Profile</a></li>
+                                                <li><a href="{{url('/dashboard/profile')}}"><i class="fa fa-user"></i>My Profile</a></li>
                                                 <li><a href="{{url('/dashboard/myorder')}}"><i class="fa fa-calendar"></i>My Orders</a></li>
                                                 {{-- <li><a href="account-favorite.html"><i class="fa fa-car"></i>My Favorite Cars</a></li> --}}
                                                 <li><a href="{{route('logout_company')}}"><i class="fa fa-sign-out"></i>Sign Out</a></li>
@@ -124,19 +124,19 @@
                 </div>
             </div>
         </header>
-        <!-- content begin -->
+
         <!-- content begin -->
         <div class="no-bottom no-top zebra" id="content">
             <div id="top"></div>
             
             <!-- section begin -->
             <section id="subheader" class="jarallax text-light">
-                <img src="{{url("frontend/images/background/14.jpg")}}" class="jarallax-img" alt="">
+                <img src="{{url('frontend/images/background/14.jpg')}}" class="jarallax-img" alt="">
                     <div class="center-y relative text-center">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-									<h1>Company Dashboard</h1>
+									<h1>My Profile</h1>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -145,7 +145,7 @@
             </section>
             <!-- section close -->
 
-            <section id="section-cars" class="bg-gray-100">
+            <section id="section-settings" class="bg-gray-100">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3 mb30">
@@ -156,87 +156,90 @@
                                     </div>
                                     <div class="profile_name">
                                         <h4>
-                                            {{ Auth::user()->name }}                                               
-                                            <span class="profile_username text-gray">{{ Auth::user()->email }} </span>
+                                            {{Auth::guard('companye')->user()->name}}                                                
+                                            <span class="profile_username text-gray">{{ Auth::guard('companye')->user()->email }}</span>
                                         </h4>
                                     </div>
                                 </div>
                                 <div class="spacer-20"></div>
                                 <ul class="menu-col">
-                                    <li><a href="{{url('/dashbord/company')}}" class="active"><i class="fa fa-home"></i>Dashboard</a></li>
-                                    <li><a href="{{route('company.profile.edit')}}"><i class="fa fa-user"></i>My Profile</a></li>
+                                    <li><a href="{{url('/dashbord/company')}}"><i class="fa fa-home"></i>Dashboard</a></li>
+                                    <li><a href="{{url('/dashboard/profile')}}" class="active"><i class="fa fa-user"></i>My Profile</a></li>
                                     <li><a href="{{url('/dashboard/myorder')}}"><i class="fa fa-calendar"></i>My Orders</a></li>
-                                    {{-- <li><a href="account-favorite.html"><i class="fa fa-car"></i>My Favorite Cars</a></li> --}}
-                                    <li><a href="{{route('logout_company')}}"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+                                    <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>Sign Out</a></li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="col-lg-9">
+                            <div class="card p-4  rounded-5">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <form id="form-create-item" class="form-border" method="post" action="{{route('company.profile.update')}}">
+                                            @csrf
+                                        <div class="de_tab tab_simple">
+                                        
+                                            <ul class="de_nav">
+                                                <li class="active"><span>Profile</span></li>
+                                            </ul>
+                                            
+                                            <div class="de_tab_content">                            
+                                                <div class="tab-1">
 
-                            <div class="card p-4 rounded-5 mb25">
-                                <h4>My Recent Orders</h4>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Name</h5>
+                                                            <input type="text" name="name" id="username" class="form-control" placeholder="Enter name" />
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Email Address</h5>
+                                                            <input type="text" name="email" id="email_address" class="form-control" placeholder="Enter email" />
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Username</h5>
+                                                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" />
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Phone No.</h5>
+                                                            <input type="text" name="phone" id="username" class="form-control" placeholder="Enter username" />
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>New Password</h5>
+                                                            <input type="Password" name="password" id="user_password" class="form-control" placeholder="********" />
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Re-enter Password</h5>
+                                                            <input type="Password" name="re-password" id="user_password_re-enter" class="form-control" placeholder="********" />
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Company Name</h5>
+                                                            <input type="text" name="cname" id="username" class="form-control" placeholder="Enter username" />
+                                                        </div>
+                                                        <div class="col-lg-6 mb20">
+                                                            <h5>Company City</h5>
+                                                            <input type="text" name="city" id="username" class="form-control" placeholder="Enter username" />
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                <table class="table de-table">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Order ID</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Car Name</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick Up Location</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Drop Off Location</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick Up Date</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Return Date</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Status</span></th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#01236</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">Jeep Renegade</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>New York</td>
-                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>Los Angeles</td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>March 2, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Return Date</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-success">completed</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#01263</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">Mini Cooper</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>San Fransisco</td>
-                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>Chicago</td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>March 8, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Return Date</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-danger">cancelled</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#01245</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">Ferrari Enzo</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>Philadelphia</td>
-                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>Washington</td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>March 6, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Return Date</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-warning">scheduled</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#01287</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">Hyundai Staria</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>Kansas City</td>
-                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>Houston</td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>March 13, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Return Date</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-success">completed</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#01216</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">Toyota Rav 4</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>Baltimore</td>
-                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>Sacramento</td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>March 7, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Return Date</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-warning">scheduled</div></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
+                                            </div>
+                                        </div>
+
+                                        <input type="submit" id="submit" class="btn-main" value="Update profile">
+                                        </form>
+                                        @if (session('success'))
+                                          <div class="alert alert-success">
+                                             {{ session('success') }}
+                                          </div>
+                                        @endif
+                                        @if (session('error'))
+                                          <div class="alert alert-danger">
+                                             {{ session('error') }}
+                                          </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -247,8 +250,7 @@
         <!-- content close -->
 
         <a href="#" id="back-to-top"></a>
-         <!-- footer begin -->
- <!-- footer begin -->
+        <!-- footer begin -->
  <footer class="text-light">
     <div class="container">
         <div class="row g-custom-x">
