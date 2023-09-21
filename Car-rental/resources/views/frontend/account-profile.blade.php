@@ -60,19 +60,20 @@
                                             
                                             <div class="de_tab_content">                            
                                                 <div class="tab-1">
-
+                                                   <h3>Hi, {{Auth::user()->name}}</h3>
                                                     <div class="row">
+                                                        <h4>Edit Profile</h4>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>Name</h5>
-                                                            <input type="text" name="name" id="username" class="form-control" placeholder="Enter name" />
+                                                            <input type="text" name="name" id="username" class="form-control" placeholder="Enter name" autocomplete="off"/>
                                                         </div>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>Email Address</h5>
-                                                            <input type="text" name="email" id="email_address" class="form-control" placeholder="Enter email" />
+                                                            <input type="text" name="email" id="email_address" class="form-control" placeholder="Enter email" autocomplete="off" />
                                                         </div>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>Username</h5>
-                                                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" />
+                                                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" autocomplete="off" />
                                                         </div>
                                                         <div class="col-lg-6 mb20">
                                                             <h5>Phone No.</h5>

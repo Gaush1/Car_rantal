@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Websitemailer;
+use App\Models\Car;
+use App\Models\CarDetail;
+use App\Models\Booking;
 use Illuminate\Validation\Rules\Password;
 
 
@@ -115,7 +118,11 @@ class RegisterController extends Controller
     }
     public function dashboard(){
 
-        return view('frontend/account-dashboard');
+        $user = auth()->user();
+        $bookedCars = $user->bookings;
+    
+        // return view('dashboard.bookings', compact('bookedCars'));
+        return view('frontend/account-dashboard', compact('bookedCars'));
     }
 
     public function logout(){
@@ -159,4 +166,60 @@ class RegisterController extends Controller
 
     return redirect()->route('user.profile.edit')->with('success', 'Profile updated successfully.');
 }
+
+public function indexCar()
+{
+    $user = auth()->user();
+    $cars = Car::all();
+    return view('frontend/carbooking', ['cars' => $cars, 'user' => $user]);
+    // return view('frontend/Adminview', ['users' => $users,'companyes' => $companyes]);
+}
+
+public function show($id)
+{
+    $user = auth()->user();
+    $car = Car::findOrFail($id);
+    $carDetail = $car->carDetail;
+    return view('frontend/carsinglebook', compact('car', 'carDetail', 'user'));
+}
+
+public function bookcar(Request $request)
+{
+    // Validate the incoming request data
+    $request->validate([
+        'user_id' => 'required|integer',
+        'car_id' => 'required|integer',
+        'total_price' => 'required|numeric',
+        'pickuplocation' => 'required|string',
+        'dropofflocation' => 'required|string',
+        'pickup_date' => 'required|date_format:Y-m-d\TH:i',
+        'return_date' => 'required|date_format:Y-m-d\TH:i',
+        'status' => 'required|in:completed,cancelled,scheduled',
+    ]);
+
+    // Create a new booking record in the database
+    $booking = Booking::create([
+        'user_id' => $request->user_id,
+        'car_id' => $request->car_id,
+        'car_name' => $request->car_name,
+        'total_price' => $request->total_price,
+        'pickuplocation' => $request->pickuplocation,
+        'dropofflocation' => $request->dropofflocation,
+        'pickup_date' => $request->pickup_date,
+        'return_date' => $request->return_date,
+        'status' => $request->status,
+    ]);
+
+    // Optionally, you can return a response or redirect to a confirmation page
+    return redirect()->back()->with('success', 'Car booked successfully!');
+}
+
+public function order(){
+    $user = auth()->user();
+    $bookedCars = $user->bookings;
+
+    // return view('dashboard.bookings', compact('bookedCars'));
+    return view('frontend/account-booking', compact('bookedCars'));
+}
+
 }

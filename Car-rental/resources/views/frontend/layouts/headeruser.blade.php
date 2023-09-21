@@ -71,11 +71,11 @@
                             </div>
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
-                                    <li><a class="menu-item" href="/">Home</a>
+                                    {{-- <li><a class="menu-item" href="/">Home</a> --}}
                                     </li>
-                                    <li><a class="menu-item" href="/cars">Cars</a>
+                                    <li><a class="menu-item" href="{{route('cars.show.list')}}">Booking A Car</a>
                                     </li>
-                                    <li><a class="menu-item" href="/booking">Booking</a></li>
+                                    {{-- <li><a class="menu-item" href="/booking">Booking</a></li> --}}
                                     <li><a class="menu-item" href="">My Account</a>
                                         <ul>
                                             <li><a class="menu-item" href="{{url('/dashboard')}}">Dashboard</a></li>
@@ -83,9 +83,9 @@
                                             <li><a class="menu-item" href="{{url('/dashboard/myorder')}}">My Orders</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class="menu-item" href="/about">About Us</a></li>
+                                    {{-- <li><a class="menu-item" href="/about">About Us</a></li> --}}
                                     </li>
-                                    <li><a class="menu-item" href="/contact">Contact Us</a>
+                                    {{-- <li><a class="menu-item" href="/contact">Contact Us</a> --}}
                                     </li>
                                 </ul>
                             </div>

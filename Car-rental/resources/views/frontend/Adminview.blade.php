@@ -139,7 +139,7 @@
             <section id="section-cars" class="bg-gray-100">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 mb30">
+                        <div class="row-lg-3 mb30">
                             <div class="card p-4 rounded-5">
                                 <div class="profile_avatar">
                                     <div class="profile_img">
@@ -234,6 +234,48 @@
                                     </td>
                                     </tr>
                                     @endforeach 
+                                  </tbody>
+                                </table>
+                        </div>
+
+                        <div class="col-lg-9">
+
+                            <div class="card p-4 rounded-5 mb25">
+                                <h4>Bookings Table</h4>
+
+                                <table class="table de-table">
+                                  <thead>
+                                    <tr>
+                                        <th scope="col"><span class="text-uppercase fs-12 text-gray">Order ID</span></th>
+                                        <th scope="col"><span class="text-uppercase fs-12 text-gray">Car Name</span></th>
+                                        <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick Up Location</span></th>
+                                        <th scope="col"><span class="text-uppercase fs-12 text-gray">Drop Off Location</span></th>
+                                        <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick Up Date</span></th>
+                                        <th scope="col"><span class="text-uppercase fs-12 text-gray">Return Date</span></th>
+                                        <th scope="col"><span class="text-uppercase fs-12 text-gray">Status</span></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach ($bookings as $item)
+                                    <tr>
+                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#{{$item->id}}</div></td>
+                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">{{$item->car_name}}</span></td>
+                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>{{$item->pickuplocation}}</td>
+                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>{{$item->dropofflocation}}</td>
+                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>{{$item->pickup_date}}</td>
+                                      <td><span class="d-lg-none d-sm-block">Return Date</span>{{$item->return_date}}</td>
+                                      <td>
+                                     @if ($item->status === 'scheduled')
+                                     <div class="badge rounded-pill bg-warning">{{$item->status}}</div>
+                                     @elseif($item->status === 'cancelled')
+                                     <div class="badge rounded-pill bg-danger">{{$item->status}}</div>
+                                     @else
+                                     <div class="badge rounded-pill bg-success">{{$item->status}}</div>
+                                     @endif
+                                      </td>
+                                    </tr>
+                                    @endforeach 
+          
                                   </tbody>
                                 </table>
                         </div>

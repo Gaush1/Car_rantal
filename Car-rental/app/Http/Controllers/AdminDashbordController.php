@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Admin;
@@ -30,7 +31,8 @@ class AdminDashbordController extends Controller
             // Authentication successful, redirect to admin dashboard or other admin-specific pages
           $users = User::all(); // Replace with your model and query
           $companyes = Companye::all();
-          return view('frontend/Adminview', ['users' => $users,'companyes' => $companyes]);
+          $bookings = Booking::all();
+          return view('frontend/Adminview', ['users' => $users,'companyes' => $companyes, "bookings"=>$bookings]);
         //   return view('frontend/Adminview');
         }
 

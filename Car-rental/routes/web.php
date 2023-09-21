@@ -42,28 +42,22 @@ Route::post('/login', [RegisterController::class, 'loginSubmit'])->name('login_s
 Route::middleware(['web', 'auth:web'])->group(function () {
 Route::get('/dashboard', [RegisterController::class, 'dashboard'])->name('dashboard');
 });
-// ->middleware(['auth','verified']);
- Route::get('/logout',[RegisterController::class, 'logout'])->name('logout');
+
+Route::get('/logout',[RegisterController::class, 'logout'])->name('logout');
+
+//Email Verification Rout User
 Route::get('/verify/{token}/{email}', [RegisterController::class, 'verifyAccount'])->name('verify_account');
-// Route::get('/login',[LoginController::class,'index'])->name('login');
+
 
 //User Dashboard Pages
-// Route::get('/dashboard/myprofile',[AccountDashboardController::class,'showProfile'])->name('show_profile');
-// Route::get('/dashboard/profile',function(){
-//       return view('frontend/account-profile');
-// });
-
 Route::get('/dashboard/profile', [RegisterController::class, 'editProfile'])->name('user.profile.edit');
 Route::post('/dashboard/profile/update', [RegisterController::class, 'updateProfile'])->name('user.profile.update');
 
+Route::get('/dashboard/myorder',[RegisterController::class, 'order'])->name('user.order');
 
-Route::get('/dashboard/myorder', function(){
-    return view('frontend/account-booking');
-});
 
-// Route::get('/order',function(){
-//     return view('frontend.account-booking');
-// });
+
+
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/admin', [AdminDashbordController::class,'index'])->name('admin.index');
@@ -87,9 +81,7 @@ Route::get('/company/register', [CompanyAuthController::class,'index'])->name("c
 Route::post('/company/register', [CompanyAuthController::class,'register'])->name("company.register.submit");
 Route::get('/verifyCompany/{token}/{email}', [CompanyAuthController::class, 'verifyAccountCompany'])->name('verify_account_company');
 
-// ->middleware('auth:companye');
-// ->middleware(['auth']);
-// 
+
 Route::middleware(['web', 'auth:companye'])->group(function () {
     // Your routes that require authentication
     Route::get('/dashbord/company',[CompanyAuthController::class,'dashbordcompany'])->name('company.dashbord');
@@ -104,3 +96,10 @@ Route::get('/dashbord/company/profile', [CompanyAuthController::class, 'editProf
 Route::post('/dashbord/company/update', [CompanyAuthController::class, 'updateProfileCompany'])->name('company.profile.update');
 
 
+
+
+Route::get('/cars', [RegisterController::class, 'indexCar'])->name('cars.show.list');
+// Route::get('/cars/{id}', [RegisterController::class, 'show'])->name('car.details');
+Route::get('/cars/{id}/details', [RegisterController::class, 'show'])->name('cars.details');
+
+Route::post('/book-car', [RegisterController::class, 'bookcar'])->name('book_car');
