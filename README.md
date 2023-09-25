@@ -2,34 +2,47 @@
 --------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 
-Car Rental is a Full-Stack Web Application. This is a project that I was assigned to make during my
-Internship Assesment. I got the guidance, and following that I made this web application with my own
-undertsnading and knowledge. It is customized according to what I thought would be better functionalities
-in this app, from the user perspective.
+## Project Background
 
-Entire web-app is fully responsive and is operational from any device.
+This car rental web application is the result of my internship assessment project. I received guidance during the development process, and I tailored the application based on my own insights and expertise. It's designed to offer enhanced functionality and a user-centric experience.
 
-Tech Stack:- HTML, CSS, Bootstrap 5, Javascript, Laravel, AJAX, PHP, MySQL.
+## Key Features
 
-This web app has the following functionalities:-
+- **User-Focused Customization:** The application is built with a strong emphasis on user experience, featuring functionalities that prioritize ease of use and efficiency.
+- **Full-Stack Development:** It encompasses both front-end and back-end components, ensuring a seamless end-to-end experience.
+- **Customized Features:** I've added several unique features that I believe enhance the overall utility of the application, making it stand out in the car rental space.
 
-1. The home page:-
---------------------
- a. Contaon a header having page Home,Cars, Booking, Corporate, About Us,and Contact Us
- b. Two buttons in the nevigation Bar Sign In and Register used to register the user and Sign in The registered user.
- c. The home page is designed for customer's.
+## Usage
 
-2. The Cars page:-
---------------------
-a. The cars page contains of listed cars with their list.
-b. The cars page also contain the individual car details with their properties.
+### User Registration and Account Verification
 
-4. About Us Page:-
---------------------
-   a. About us page contain general details of the car rental web application.
-   b. It contain the details of the developers.
+To get started, users should register for an account by clicking on the "Register" or "Sign Up" button on the homepage. Users will need to provide their:
 
-6. Contact Us Page:-
---------------------
- a. This page contain the contact us form.
+- Username
+- Email address
+- Password
+- Other relevant information (e.g., contact details)
+
+After registration, an email verification link will be sent to the provided email address. Users should check their email and click on the verification link to activate their account.
+
+### User Dashboard
+
+Once the account is verified, users can log in using their registered email and password. Upon successful login, users will be directed to their personal dashboard. In the dashboard, users can:
+
+- View their profile information.
+- Change account settings (e.g., update password or contact information).
+- See a list of previous car bookings, including booking details and history.
+- Access the car booking functionality to make new bookings.
+
+### Booking a Car
+
+To book a car, users can navigate to the "Book a Car" section in their dashboard. They can search for available cars based on criteria such as location, date, and vehicle type. Select a car from the available options. Specify the date and duration of the rental. Confirm the booking by providing necessary details, including payment information if required. After booking, users will see their booking in the dashbord booking details.
+
+## Technologies Used
+
+- **Front-End:** HTML, CSS, JavaScript.
+- **Back-End:** Laravel, PHP.
+- **Database:** MySQL.
+
+
 
