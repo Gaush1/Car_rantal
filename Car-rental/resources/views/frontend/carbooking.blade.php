@@ -69,23 +69,25 @@
                                     <!-- logo close -->
                                 </div>
                             </div>
+                            @if(!auth()->check()) <!-- Check if the user is authenticated -->
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
-                                    {{-- <li><a class="menu-item" href="/">Home</a> --}}
+                                    <li><a class="menu-item" href="/">Home</a>
                                     </li>
                                     {{-- <li><a class="menu-item" href="/cars">Cars</a> --}}
                                         
                                     </li>
-                                    {{-- <li><a class="menu-item" href="/booking">Booking</a></li> --}}
-                                    {{-- <li><a class="menu-item" href="/index/company">Corporate</a> --}}
+                                    <li><a class="menu-item" href="/booking">Booking</a></li>
+                                    <li><a class="menu-item" href="/index/company">Corporate</a>
                                     </li>
-                                    {{-- <li><a class="menu-item" href="/about">About Us</a> --}}
+                                    <li><a class="menu-item" href="/about">About Us</a>
                                     </li>
-                                    {{-- <li><a class="menu-item" href="/contact">Contact Us</a> --}}
+                                    <li><a class="menu-item" href="/contact">Contact Us</a>
                                     </li>
                                 </ul>
                             </div>
-                            {{-- <div class="de-flex-col">
+                            
+                            <div class="de-flex-col">
                                 <div class="menu_side_area">
                                     <a href="/login" class="btn-main">Sign In</a>
                                     <span id="menu-btn"></span>
@@ -94,7 +96,8 @@
                                     <a href="/register" class="btn-main">Register</a>
                                     <span id="menu-btn"></span>
                                 </div>
-                            </div> --}}
+                            @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -125,32 +128,36 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3">
+                            <form action="{{ route('filter_cars') }}" method="get">
+                                
+                                @csrf
                             <div class="item_filter_group">
                                 <h4>Vehicle Type</h4>
                                 <div class="de_form">
                                     <div class="de_checkbox">
-                                        <input id="vehicle_type_1" name="vehicle_type_1" type="checkbox" value="vehicle_type_1">
+                                        <input id="vehicle_type_1" name="types[]" type="checkbox" value="Car">
                                         <label for="vehicle_type_1">Car</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="vehicle_type_2" name="vehicle_type_2" type="checkbox" value="vehicle_type_2">
+                                        <input id="vehicle_type_2" name="types[]" type="checkbox" value="Van">
                                         <label for="vehicle_type_2">Van</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="vehicle_type_3" name="vehicle_type_3" type="checkbox" value="vehicle_type_3">
+                                        <input id="vehicle_type_3" name="types[]" type="checkbox" value="Minibus">
                                         <label for="vehicle_type_3">Minibus</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="vehicle_type_4" name="vehicle_type_4" type="checkbox" value="vehicle_type_4">
+                                        <input id="vehicle_type_4" name="types[]" type="checkbox" value="Prestige">
                                         <label for="vehicle_type_4">Prestige</label>
                                     </div>
 
                                 </div>
+                                <button type="submit" class="btn btn-primary">Apply Filters</button>
                             </div>
-
+                        </form>
                             <div class="item_filter_group">
                                 <h4>Car Body Type</h4>
                                 <div class="de_form">
@@ -313,84 +320,7 @@
                                 </div>
 
                                 @endforeach
-{{-- 
-                                <div class="col-xl-4 col-lg-6">
-                                    <div class="de-item mb30">
-                                        <div class="d-img">
-                                            <img src="{{url("frontend/images/cars/ford-raptor.jpg")}}" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="d-info">
-                                            <div class="d-text">
-                                                <h4>Ford Raptor</h4>
-                                                <div class="d-item_like">
-                                            <i class="fa fa-heart"></i><span>89</span>
-                                        </div>
-                                        <div class="d-atr-group">
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/1.svg")}}" alt="">5</span>
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/2.svg")}}" alt="">2</span>
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/3.svg")}}" alt="">4</span>
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/4.svg")}}" alt="">Pickup Truck</span>
-                                                </div>
-                                                <div class="d-price">
-                                                    Daily rate from <span>$147</span>
-                                                    <a class="btn-main" href="/car-single">Rent Now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-4 col-lg-6">
-                                    <div class="de-item mb30">
-                                        <div class="d-img">
-                                            <img src="{{url("frontend/images/cars/mini-cooper.jpg")}}" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="d-info">
-                                            <div class="d-text">
-                                                <h4>Mini Cooper</h4>
-                                                <div class="d-item_like">
-                                            <i class="fa fa-heart"></i><span>87</span>
-                                        </div>
-                                        <div class="d-atr-group">
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/1.svg")}}" alt="">5</span>
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/2.svg")}}" alt="">2</span>
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/3.svg")}}" alt="">4</span>
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/4.svg")}}" alt="">Hatchback</span>
-                                                </div>
-                                                <div class="d-price">
-                                                    Daily rate from <span>$238</span>
-                                                    <a class="btn-main" href="/car-single">Rent Now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-4 col-lg-6">
-                                    <div class="de-item mb30">
-                                        <div class="d-img">
-                                            <img src="{{url("frontend/images/cars/vw-polo.jpg")}}" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="d-info">
-                                            <div class="d-text">
-                                                <h4>VW Polo</h4>
-                                                <div class="d-item_like">
-                                            <i class="fa fa-heart"></i><span>37</span>
-                                        </div>
-                                        <div class="d-atr-group">
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/1.svg")}}" alt="">5</span>
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/2.svg")}}" alt="">2</span>
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/3.svg")}}" alt="">4</span>
-                                                    <span class="d-atr"><img src="{{url("frontend/images/icons/4.svg")}}" alt="">Hatchback</span>
-                                                </div>
-                                                <div class="d-price">
-                                                    Daily rate from <span>$106</span>
-                                                    <a class="btn-main" href="/car-single">Rent Now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+{{--
 
                                 <div class="col-xl-4 col-lg-6">
                                     <div class="de-item mb30">

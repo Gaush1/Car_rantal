@@ -32,7 +32,8 @@ class AdminDashbordController extends Controller
           $users = User::all(); // Replace with your model and query
           $companyes = Companye::all();
           $bookings = Booking::all();
-          return view('frontend/Adminview', ['users' => $users,'companyes' => $companyes, "bookings"=>$bookings]);
+          $admin = Auth::guard('admin')->user();
+          return view('frontend/Adminview', ['users' => $users,'companyes' => $companyes, "bookings"=>$bookings,'admin'=> $admin]);
         //   return view('frontend/Adminview');
         }
 

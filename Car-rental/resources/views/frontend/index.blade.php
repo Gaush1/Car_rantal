@@ -440,34 +440,37 @@
                         </div>
 
                         <div id="items-carousel" class="owl-carousel wow fadeIn">
-
+                          @foreach ($cars as $item)
+                              
+                          
                             <div class="col-lg-12">
                                 <div class="de-item mb30">
                                     <div class="d-img">
-                                        <img src="frontend/images/cars/jeep-renegade.jpg" class="img-fluid" alt="">
+                                        <img src="{{url("$item->image")}}" class="img-fluid" alt="">
                                     </div>
                                     <div class="d-info">
                                         <div class="d-text">
-                                            <h4>Jeep Renegade</h4>
+                                            <h4>{{$item->name}}</h4>
                                             <div class="d-item_like">
                                                 <i class="fa fa-heart"></i><span>74</span>
                                             </div>
                                             <div class="d-atr-group">
-                                                <span class="d-atr"><img src="frontend/images/icons/1.svg" alt="">5</span>
-                                                <span class="d-atr"><img src="frontend/images/icons/2.svg" alt="">2</span>
-                                                <span class="d-atr"><img src="frontend/images/icons/3.svg" alt="">4</span>
-                                                <span class="d-atr"><img src="frontend/images/icons/4.svg" alt="">SUV</span>
+                                                <span class="d-atr"><img src="frontend/images/icons/1.svg" alt="">{{$item->capacity}}</span>
+                                                <span class="d-atr"><img src="frontend/images/icons/2.svg" alt="">{{$item->storage}}</span>
+                                                <span class="d-atr"><img src="frontend/images/icons/3.svg" alt="">{{$item->doors}}</span>
+                                                <span class="d-atr"><img src="frontend/images/icons/4.svg" alt="">{{$item->bodytype}}</span>
                                             </div>
                                             <div class="d-price">
-                                                Daily rate from <span>$265</span>
-                                                <a class="btn-main" href="car-single.html">Rent Now</a>
+                                                Daily rate from <span>${{$item->price}}</span>
+                                                <a class="btn-main" href="{{route('cars.details', $item->id)}}">Rent Now</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-lg-12">
+                           
+                            @endforeach
+                            {{-- <div class="col-lg-12">
                                 <div class="de-item mb30">
                                     <div class="d-img">
                                         <img src="frontend/images/cars/bmw-m5.jpg" class="img-fluid" alt="">
@@ -595,7 +598,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
 

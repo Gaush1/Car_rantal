@@ -27,8 +27,8 @@ use App\Http\Controllers\AdminDashbordController;
 
 // Basic Routes to nevigate over Pages
 Route::get('/',[IndexController::class,'index'])->name('index');
-Route::get('/cars',[CarsController::class,'index']);
-Route::get('/car-single',[CarSingleController::class,'index']);
+// Route::get('/cars',[CarsController::class,'index']);
+// Route::get('/car-single',[CarSingleController::class,'index']);
 Route::get('/booking',[BookingController::class,'index']);
 Route::get('/about',[AboutController::class,'index']);
 Route::get('/contact',[ContactController::class,'index']);
@@ -103,3 +103,5 @@ Route::get('/cars', [RegisterController::class, 'indexCar'])->name('cars.show.li
 Route::get('/cars/{id}/details', [RegisterController::class, 'show'])->name('cars.details');
 
 Route::post('/book-car', [RegisterController::class, 'bookcar'])->name('book_car');
+
+Route::get('/cars/filter', [RegisterController::class, 'filterCars'])->name('filter_cars');

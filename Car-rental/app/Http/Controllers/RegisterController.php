@@ -55,7 +55,7 @@ class RegisterController extends Controller
 
 
         // return "Registered Succesfully. A verification Email will be send to your email Address".$request->email."Please Click on the click to verify";
-        return view('frontend/registermailpage')->with($userData) ;
+        return view('frontend/registermailpage',['userData' => $userData]);
        
         }
 
@@ -220,6 +220,25 @@ public function order(){
 
     // return view('dashboard.bookings', compact('bookedCars'));
     return view('frontend/account-booking', compact('bookedCars'));
+}
+
+    public function filterCars(Request $request)
+{
+    // Get the selected vehicle types from the form
+    $selectedTypes = $request->input('types', []);
+
+    
+    if (empty($selectedTypes)) {
+        // No filters selected, so retrieve all cars
+        $filteredCars = Car::all();
+    } else {
+        // Query the cars table with the selected types
+       $filteredCars = Car::whereIn('type', $selectedTypes)->get();
+    }
+
+    // Pass the filtered cars to the view
+    return view('frontend/carbooking', ['cars' => $filteredCars]);
+    
 }
 
 }
