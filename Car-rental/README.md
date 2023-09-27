@@ -1,66 +1,70 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="/Car-rental/public/images-flow/index.PNG" width="400" alt="Laravel Logo"></a></p>
+# Car Rental Web Application:-	 
+--------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Usage
 
-## About Laravel
+### Home Page
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+On entering the web application user lands on the home page, the home page have these pages:-
+<p align="center"><img src="/Car-rental/public/images-flow/index.PNG" width="400" alt="Index Page"></p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Home
+- Cars
+- Booking
+- Corporate
+- About Us
+- Contact Us
+- Sign In
+- Register
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Cars
 
-## Learning Laravel
+Cars page contain all the listed cars in the website, a user is able to apply filters on cars and explore the car by clicking on the Rent now button, he is nevigated to car detail page.
+<p align="center"><img src="/Car-rental/public/images-flow/carlist.PNG" width="400" alt="Car List page"></p>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Cars detail
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+A user can explore and book a car on the cars detail page by clicking on Book now button after filling the form this is only applicable for logged in users.
+<p align="center"><img src="/Car-rental/public/images-flow/carsingle.PNG" width="400" alt="Car Detail Page"></p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### User Registration and Account Verification
 
-## Laravel Sponsors
+To get started, users should register for an account by clicking on the "Register" or "Sign Up" button on the homepage. Users will need to provide their:
+<p align="center"><img src="/Car-rental/public/images-flow/register.PNG" width="400" alt="Car Detail Page"></p>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Username
+- Email address
+- Password
+- Other relevant information (e.g., contact details)
 
-### Premium Partners
+After registration, an email verification link will be sent to the provided email address. Users should check their email and click on the verification link to activate their account.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### User Dashboard
 
-## Contributing
+Once the account is verified, users can log in using their registered email and password. Upon successful login, users will be directed to their personal dashboard. In the dashboard, users can:
+<p align="center"><img src="/Car-rental/public/images-flow/userdashbord.PNG" width="400" alt="Car Detail Page"></p>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- View their profile information.
+- Change account settings (e.g., update password or contact information).
+- See a list of previous car bookings, including booking details and history.
+- Access the car booking functionality to make new bookings.
 
-## Code of Conduct
+### Booking a Car
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+To book a car, users can navigate to the "Book a Car" section in their dashboard. They can search for available cars based on criteria such as seats, capacity, price, and vehicle type. Select a car from the available options. Specify the date and duration of the rental. Confirm the booking by providing necessary details. After booking, users will see their booking in the dashbord booking details.
 
-## Security Vulnerabilities
+### Booking Details
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+The User Can go to his/her Dashbord and navigate to booking details here he can find all previous bookings.
+<p align="center"><img src="/Car-rental/public/images-flow/orderpage.PNG" width="400" alt="Car Detail Page"></p>
 
-## License
+### Profile Update
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+User can update the profile by going to myprofile page.
+<p align="center"><img src="/Car-rental/public/images-flow/profile.PNG" width="400" alt="Car Detail Page"></p>
+
+### Logout
+
+By clicking on Logout the user can easily logout from his account.
+
