@@ -53,6 +53,7 @@ Once the account is verified, users can log in using their registered email and 
 ### Booking a Car
 
 To book a car, users can navigate to the "Book a Car" section in their dashboard. They can search for available cars based on criteria such as seats, capacity, price, and vehicle type. Select a car from the available options. Specify the date and duration of the rental. Confirm the booking by providing necessary details. After booking, users will see their booking in the dashbord booking details.
+<p align="center"><img src="/Car-rental/public/images-flow/bookingform.PNG" width="400" alt="Car Detail Page"></p>
 
 ### Booking Details
 
