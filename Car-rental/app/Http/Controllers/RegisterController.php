@@ -227,17 +227,46 @@ public function order(){
     // Get the selected vehicle types from the form
     $selectedTypes = $request->input('types', []);
 
+    // Get the selected car body types
+    $selectedBodyTypes = $request->input('bodytypes', []);
+
+     // Get the selected car seats options
+    $selectedSeats = $request->input('capacity', []);
     
-    if (empty($selectedTypes)) {
-        // No filters selected, so retrieve all cars
-        $filteredCars = Car::all();
-    } else {
-        // Query the cars table with the selected types
-       $filteredCars = Car::whereIn('type', $selectedTypes)->get();
+    // Get the price range
+    $minPrice = $request->input('min_price', 0);
+    $maxPrice = $request->input('max_price', 2000);
+
+     // Query the cars table based on selected filters
+     $query = Car::query();
+
+     if (!empty($selectedTypes)) {
+        $query->whereIn('type', $selectedTypes);
     }
 
-    // Pass the filtered cars to the view
-    return view('frontend/carbooking', ['cars' => $filteredCars]);
+    if (!empty($selectedBodyTypes)) {
+        $query->whereIn('bodytype', $selectedBodyTypes);
+    }
+
+    if (!empty($selectedSeats)) {
+        $query->whereIn('capacity', $selectedSeats);
+    }
+
+    $query->whereBetween('price', [$minPrice, $maxPrice]);
+
+    // Retrieve the filtered cars
+    $filteredCars = $query->get();
+
+        // Pass the filtered cars to the view
+        return view('frontend/carbooking', ['cars' => $filteredCars]);
+
+    // if (empty($selectedTypes)) {
+    //     // No filters selected, so retrieve all cars
+    //     $filteredCars = Car::all();
+    // } else {
+    //     // Query the cars table with the selected types
+    //    $filteredCars = Car::whereIn('type', $selectedTypes)->get();
+    // }
     
 }
 

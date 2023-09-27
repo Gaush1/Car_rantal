@@ -128,9 +128,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3">
-                            <form action="{{ route('filter_cars') }}" method="get">
-                                
-                                @csrf
+                        <form action="{{ route('filter_cars') }}" method="get">
+                          @csrf
                             <div class="item_filter_group">
                                 <h4>Vehicle Type</h4>
                                 <div class="de_form">
@@ -155,59 +154,59 @@
                                     </div>
 
                                 </div>
-                                <button type="submit" class="btn btn-primary">Apply Filters</button>
+                                
                             </div>
-                        </form>
+                        
                             <div class="item_filter_group">
                                 <h4>Car Body Type</h4>
                                 <div class="de_form">
                                     <div class="de_checkbox">
-                                        <input id="car_body_type_1" name="car_body_type_1" type="checkbox" value="car_body_type_1">
+                                        <input id="car_body_type_1" name="bodytypes[]" type="checkbox" value="Convertible">
                                         <label for="car_body_type_1">Convertible</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_body_type_2" name="car_body_type_2" type="checkbox" value="car_body_type_2">
+                                        <input id="car_body_type_2" name="bodytypes[]" type="checkbox" value="Coupe">
                                         <label for="car_body_type_2">Coupe</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_body_type_3" name="car_body_type_3" type="checkbox" value="car_body_type_3">
+                                        <input id="car_body_type_3" name="bodytypes[]" type="checkbox" value="Exotic Cars">
                                         <label for="car_body_type_3">Exotic Cars</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_body_type_4" name="car_body_type_4" type="checkbox" value="car_body_type_4">
+                                        <input id="car_body_type_4" name="bodytypes[]" type="checkbox" value="Hatchback">
                                         <label for="car_body_type_4">Hatchback</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_body_type_5" name="car_body_type_5" type="checkbox" value="car_body_type_5">
+                                        <input id="car_body_type_5" name="bodytypes[]" type="checkbox" value="Minivan">
                                         <label for="car_body_type_5">Minivan</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_body_type_6" name="car_body_type_6" type="checkbox" value="car_body_type_6">
+                                        <input id="car_body_type_6" name="bodytypes[]" type="checkbox" value="Pickup Truck">
                                         <label for="car_body_type_6">Pickup Truck</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_body_type_7" name="car_body_type_7" type="checkbox" value="car_body_type_7">
+                                        <input id="car_body_type_7" name="bodytypes[]" type="checkbox" value="Sedan">
                                         <label for="car_body_type_7">Sedan</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_body_type_8" name="car_body_type_8" type="checkbox" value="car_body_type_8">
+                                        <input id="car_body_type_8" name="bodytypes[]" type="checkbox" value="Sports Car">
                                         <label for="car_body_type_8">Sports Car</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_body_type_9" name="car_body_type_9" type="checkbox" value="car_body_type_9">
+                                        <input id="car_body_type_9" name="bodytypes[]" type="checkbox" value="Station Wagon">
                                         <label for="car_body_type_9">Station Wagon</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_body_type_10" name="car_body_type_10" type="checkbox" value="car_body_type_10">
+                                        <input id="car_body_type_10" name="bodytypes[]" type="checkbox" value="SUV">
                                         <label for="car_body_type_10">SUV</label>
                                     </div>
 
@@ -218,29 +217,29 @@
                                 <h4>Car Seats</h4>
                                 <div class="de_form">
                                     <div class="de_checkbox">
-                                        <input id="car_seat_1" name="car_seat_1" type="checkbox" value="car_seat_1">
+                                        <input id="car_seat_1" name="capacity[]" type="checkbox" value="2">
                                         <label for="car_seat_1">2 seats</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_seat_2" name="car_seat_2" type="checkbox" value="car_seat_2">
+                                        <input id="car_seat_2" name="capacity[]" type="checkbox" value="4">
                                         <label for="car_seat_2">4 seats</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_seat_3" name="car_seat_3" type="checkbox" value="car_seat_3">
-                                        <label for="car_seat_3">6 seats</label>
+                                        <input id="car_seat_3" name="capacity[]" type="checkbox" value="5">
+                                        <label for="car_seat_3">5 seats</label>
                                     </div>
 
                                     <div class="de_checkbox">
-                                        <input id="car_seat_4" name="car_seat_4" type="checkbox" value="car_seat_4">
+                                        <input id="car_seat_4" name="capacity[]" type="checkbox" value="8">
                                         <label for="car_seat_4">6+ seats</label>
                                     </div>
 
                                 </div>
                             </div>
 
-                            <div class="item_filter_group">
+                            {{-- <div class="item_filter_group">
                                 <h4>Car Engine Capacity (cc)</h4>
                                 <div class="de_form">
                                     <div class="de_checkbox">
@@ -264,9 +263,9 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="item_filter_group">
+                            {{-- <div class="item_filter_group">
                                 <h4>Price ($)</h4>
                                   <div class="price-input">
                                     <div class="field">
@@ -285,9 +284,25 @@
                                     <input type="range" class="range-min" min="0" max="2000" value="0" step="1">
                                     <input type="range" class="range-max" min="0" max="2000" value="2000" step="1">
                                   </div>
+                            </div> --}}
+                            <div class="item_filter_group">
+                                <h4>Price ($)</h4>
+                                <div class="price-input">
+                                    <div class="field">
+                                        <span>Min</span>
+                                        <input type="number" name="min_price" class="input-min" value="0">
+                                    </div>
+                                    <div class="field">
+                                        <span>Max</span>
+                                        <input type="number" name="max_price" class="input-max" value="2000">
+                                    </div>
+                                </div>
+                                <!-- Add a slider or range input if you have JavaScript-based price range functionality -->
                             </div>
+                            <button type="submit" class="btn btn-primary">Apply Filters</button>
+                        </form>
                         </div>
-
+                        
                         <div class="col-lg-9">
                             <div class="row">
                              @foreach ($cars as $item)
