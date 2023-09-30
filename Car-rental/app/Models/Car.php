@@ -32,5 +32,9 @@ public function bookings()
 {
     return $this->hasMany(Booking::class);
 }
+public function companybooking()
+{
+    return $this->hasMany(Companybooking::class);
+}
 
 }

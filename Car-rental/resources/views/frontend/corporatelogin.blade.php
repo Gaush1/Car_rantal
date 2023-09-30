@@ -1,5 +1,5 @@
-@extends('frontend.layouts.main')
-@section('main-container')
+@extends('frontend.layouts.maincompany')
+@section('maincompany-container') 
     <!-- header close -->
     <!-- content begin -->
     <div class="no-bottom no-top" id="content">

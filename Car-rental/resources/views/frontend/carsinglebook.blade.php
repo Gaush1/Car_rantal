@@ -273,6 +273,72 @@
                                     <div class="clearfix"></div>
 
                                 </form>
+                                @elseif(Auth::guard('companye')->user())
+                                <form name="contactForm" id='contact_form' method="post" action="{{ route('book_car.company') }}">
+                                    @csrf
+                                    <h4>Booking this car</h4>
+
+                                    <div class="spacer-20"></div>
+
+                                    <div class="row">
+                                        <!-- User ID (Assuming the user is authenticated) -->
+                                 
+                                            <input type="hidden" name="companye_id" value="{{ Auth::guard('companye')->user()->id }}">
+                                      
+                                            <input type="hidden" name="car_id" value="{{ $carDetail->id }}">
+                                       
+                                            <!-- Car Name (Hidden, will be filled based on the selected car) -->
+                                        <div class="col-lg-12 mb20">
+                                            <h5>Vehicle Name</h5>
+                                            <input type="text" name="car_name"
+                                                value="{{ $carDetail->name }}" id="autocomplete" autocomplete="off"
+                                                class="form-control">
+                                        </div>
+
+                                            <input type="hidden" name="total_price"
+                                                value="{{ $carDetail->price }}" id="total_price" class="form-control" step="0.01">
+
+                                        <div class="col-lg-12 mb20">
+                                            <h5>Pick Up Location</h5>
+                                            <input type="text" name="pickuplocation" 
+                                                placeholder="Enter your pickup location" id="autocomplete"
+                                                autocomplete="off" class="form-control">
+
+                                        </div>
+
+                                        <div class="col-lg-12 mb20">
+                                            <h5>Drop Off Location</h5>
+                                            <input type="text" name="dropofflocation" 
+                                                placeholder="Enter your dropoff location" id="autocomplete2"
+                                                autocomplete="off" class="form-control">
+
+                                        </div>
+
+                                        <div class="col-lg-12 mb20">
+                                            <h5>Pick Up Date & Time</h5>
+                                            <input type="datetime-local" name="pickup_date"
+                                                id="autocomplete" autocomplete="off"
+                                                class="form-control">
+                                        </div>
+
+                                        <div class="col-lg-12 mb20">
+                                            <h5>Return Date & Time</h5>
+                                            <input type="datetime-local" name="return_date"
+                                                id="autocomplete" autocomplete="off"
+                                                class="form-control">
+                                        </div>
+
+                                        <!-- Booking Status (Scheduled by default) -->
+                                       <input type="hidden" name="status" value="scheduled">
+
+                                    </div>
+
+                                    <input type='submit' id='send_message' value='Book Now'
+                                        class="btn-main btn-fullwidth">
+
+                                    <div class="clearfix"></div>
+
+                                </form>
                                 @else
                                 <p>Please <a href="{{ route('login') }}">log in</a> to book a car.</p>
                                 @endif

@@ -12,4 +12,9 @@ class IndexController extends Controller
         return view('frontend/index', ['cars' => $cars]);
         // return view('');
     }
+
+    public function companyindex(){
+        $cars = Car::all();
+        return view('frontend/corporateindex', ['cars' => $cars]);
+    }
 }

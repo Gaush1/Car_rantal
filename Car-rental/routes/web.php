@@ -71,12 +71,9 @@ Route::get('/admin/logout', [AdminDashbordController::class,'adminlogout'])->nam
 });
 
 //Company Based Routes
-Route::get('/index/company',function(){
-    return view('frontend/corporateindex');
-});
-// Route::get('/company/register',function(){
-//     return view('frontend/corporateregister');
-// });
+
+Route::get('/index/company',[IndexController::class,'companyindex'])->name('company.index');
+
 Route::get('/company/register', [CompanyAuthController::class,'index'])->name("company.register");
 Route::post('/company/register', [CompanyAuthController::class,'register'])->name("company.register.submit");
 Route::get('/verifyCompany/{token}/{email}', [CompanyAuthController::class, 'verifyAccountCompany'])->name('verify_account_company');
@@ -94,6 +91,7 @@ Route::get('/logout/company',[CompanyAuthController::class, 'logout'])->name('lo
 
 Route::get('/dashbord/company/profile', [CompanyAuthController::class, 'editProfileCompany'])->name('company.profile.edit');
 Route::post('/dashbord/company/update', [CompanyAuthController::class, 'updateProfileCompany'])->name('company.profile.update');
+Route::get('/dashbord/company/booking', [CompanyAuthController::class, 'companybooking'])->name('company.profile.booking');
 
 
 
@@ -105,3 +103,7 @@ Route::get('/cars/{id}/details', [RegisterController::class, 'show'])->name('car
 Route::post('/book-car', [RegisterController::class, 'bookcar'])->name('book_car');
 
 Route::get('/cars/filter', [RegisterController::class, 'filterCars'])->name('filter_cars');
+
+// Car booking for Corporate
+
+Route::post('/book-car/company', [CompanyAuthController::class, 'bookcar'])->name('book_car.company');

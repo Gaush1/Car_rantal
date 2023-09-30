@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\User;
+use App\Models\Companybooking;
 use Hash;
 use App\Models\Companye;
 use Illuminate\Http\Request;
@@ -118,8 +119,10 @@ public function verifyAccountCompany($token, $email)
 
 
 public function dashbordcompany(){
-
-    return view('frontend/companydashbord');
+    $user = Auth::guard('companye')->user();
+    $bookedCars = $user->companybooking;
+    return view('frontend/companydashbord', compact('bookedCars'));
+    // return view('frontend/companydashbord');
 }
 
 public function logout(){
@@ -135,6 +138,12 @@ public function logout(){
 public function editProfileCompany(){
     $user = Auth::guard('companye')->user();
     return view('frontend/company-profile', compact('user'));
+}
+public function companybooking(){
+    $user = Auth::guard('companye')->user();
+    $bookedCars = $user->companybooking;
+    // return view('frontend/corporatebooking', compact('user'));
+    return view('frontend/corporatebooking', ['user' => $user, 'bookedCars' => $bookedCars]);
 }
 
 public function updateProfileCompany(Request $request)
@@ -168,4 +177,36 @@ public function updateProfileCompany(Request $request)
 
     return redirect()->route('company.profile.edit')->with('success', 'Profile updated successfully.');
 }
+
+public function bookcar(Request $request)
+{
+    // Validate the incoming request data
+    $request->validate([
+        'companye_id' => 'required|integer',
+        'car_id' => 'required|integer',
+        'total_price' => 'required|numeric',
+        'pickuplocation' => 'required|string',
+        'dropofflocation' => 'required|string',
+        'pickup_date' => 'required|date_format:Y-m-d\TH:i',
+        'return_date' => 'required|date_format:Y-m-d\TH:i',
+        'status' => 'required|in:completed,cancelled,scheduled',
+    ]);
+
+    // Create a new booking record in the database
+    $booking = Companybooking::create([
+        'companye_id' => $request->companye_id,
+        'car_id' => $request->car_id,
+        'car_name' => $request->car_name,
+        'total_price' => $request->total_price,
+        'pickuplocation' => $request->pickuplocation,
+        'dropofflocation' => $request->dropofflocation,
+        'pickup_date' => $request->pickup_date,
+        'return_date' => $request->return_date,
+        'status' => $request->status,
+    ]);
+
+    //  return a response or redirect to a confirmation page
+    return redirect()->back()->with('success', 'Car booked successfully!');
+}
+
 }

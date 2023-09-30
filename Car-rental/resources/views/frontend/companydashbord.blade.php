@@ -71,22 +71,22 @@
                             </div>
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
-                                    <li><a class="menu-item" href="/index/company">Home</a>
+                                    {{-- <li><a class="menu-item" href="/index/company">Home</a>
+                                    </li> --}}
+                                    <li><a class="menu-item" href="/cars">Book Cars</a>
                                     </li>
-                                    <li><a class="menu-item" href="/cars">Cars</a>
-                                    </li>
-                                    <li><a class="menu-item" href="/booking">Booking</a></li>
+                                    {{-- <li><a class="menu-item" href="/booking">Booking</a></li> --}}
                                     <li><a class="menu-item" href="">My Account</a>
                                         <ul>
                                             <li><a class="menu-item" href="{{url('/dashbord/company')}}">Dashboard</a></li>
                                             <li><a class="menu-item" href="{{route('company.profile.edit')}}">My Profile</a></li>
-                                            <li><a class="menu-item" href="{{url('/dashboard/myorder')}}">My Orders</a></li>
+                                            <li><a class="menu-item" href="{{route('company.profile.booking')}}">My Orders</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class="menu-item" href="/about">About Us</a></li>
+                                    {{-- <li><a class="menu-item" href="/about">About Us</a></li>
                                     </li>
                                     <li><a class="menu-item" href="/contact">Contact Us</a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                             <div class="de-flex-col">
@@ -102,7 +102,7 @@
                                         <div id="de-submenu-profile" class="de-submenu">
                                             <div class="d-name">
                                                 <h4>{{ Auth::guard('companye')->user()->name}}</h4>
-                                                <span class="text-gray">{{ Auth::user()->email }} </span>
+                                                <span class="text-gray">{{ Auth::guard('companye')->user()->email }} </span>
                                             </div>
 
                                             <div class="d-line"></div>
@@ -110,7 +110,7 @@
                                             <ul class="menu-col">
                                                 <li><a href="{{url('/dashbord/company')}}"><i class="fa fa-home"></i>Dashboard</a></li>
                                                 <li><a href="{{route('company.profile.edit')}}"><i class="fa fa-user"></i>My Profile</a></li>
-                                                <li><a href="{{url('/dashboard/myorder')}}"><i class="fa fa-calendar"></i>My Orders</a></li>
+                                                <li><a href="{{route('company.profile.booking')}}"><i class="fa fa-calendar"></i>My Orders</a></li>
                                                 {{-- <li><a href="account-favorite.html"><i class="fa fa-car"></i>My Favorite Cars</a></li> --}}
                                                 <li><a href="{{route('logout_company')}}"><i class="fa fa-sign-out"></i>Sign Out</a></li>
                                             </ul>
@@ -156,8 +156,8 @@
                                     </div>
                                     <div class="profile_name">
                                         <h4>
-                                            {{ Auth::user()->name }}                                               
-                                            <span class="profile_username text-gray">{{ Auth::user()->email }} </span>
+                                            {{ Auth::guard('companye')->user()->name }}                                               
+                                            <span class="profile_username text-gray">{{ Auth::guard('companye')->user()->email }} </span>
                                         </h4>
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@
                                 <ul class="menu-col">
                                     <li><a href="{{url('/dashbord/company')}}" class="active"><i class="fa fa-home"></i>Dashboard</a></li>
                                     <li><a href="{{route('company.profile.edit')}}"><i class="fa fa-user"></i>My Profile</a></li>
-                                    <li><a href="{{url('/dashboard/myorder')}}"><i class="fa fa-calendar"></i>My Orders</a></li>
+                                    <li><a href="{{route('company.profile.booking')}}"><i class="fa fa-calendar"></i>My Orders</a></li>
                                     {{-- <li><a href="account-favorite.html"><i class="fa fa-car"></i>My Favorite Cars</a></li> --}}
                                     <li><a href="{{route('logout_company')}}"><i class="fa fa-sign-out"></i>Sign Out</a></li>
                                 </ul>
@@ -178,64 +178,39 @@
                                 <h4>My Recent Orders</h4>
 
                                 <table class="table de-table">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Order ID</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Car Name</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick Up Location</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Drop Off Location</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick Up Date</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Return Date</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Status</span></th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#01236</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">Jeep Renegade</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>New York</td>
-                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>Los Angeles</td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>March 2, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Return Date</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-success">completed</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#01263</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">Mini Cooper</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>San Fransisco</td>
-                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>Chicago</td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>March 8, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Return Date</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-danger">cancelled</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#01245</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">Ferrari Enzo</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>Philadelphia</td>
-                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>Washington</td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>March 6, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Return Date</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-warning">scheduled</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#01287</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">Hyundai Staria</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>Kansas City</td>
-                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>Houston</td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>March 13, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Return Date</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-success">completed</div></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#01216</div></td>
-                                      <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">Toyota Rav 4</span></td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Location</span>Baltimore</td>
-                                      <td><span class="d-lg-none d-sm-block">Drop Off Location</span>Sacramento</td>
-                                      <td><span class="d-lg-none d-sm-block">Pick Up Date</span>March 7, 2023</td>
-                                      <td><span class="d-lg-none d-sm-block">Return Date</span>March 10, 2023</td>
-                                      <td><div class="badge rounded-pill bg-warning">scheduled</div></td>
-                                    </tr>
-                                  </tbody>
+                                    <thead>
+                                        <tr>
+                                          <th scope="col"><span class="text-uppercase fs-12 text-gray">Order ID</span></th>
+                                          <th scope="col"><span class="text-uppercase fs-12 text-gray">Car Name</span></th>
+                                          <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick Up Location</span></th>
+                                          <th scope="col"><span class="text-uppercase fs-12 text-gray">Drop Off Location</span></th>
+                                          <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick Up Date</span></th>
+                                          <th scope="col"><span class="text-uppercase fs-12 text-gray">Return Date</span></th>
+                                          <th scope="col"><span class="text-uppercase fs-12 text-gray">Status</span></th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        @foreach ($bookedCars as $item)
+                                        <tr>
+                                          <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#{{$item->id}}</div></td>
+                                          <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">{{$item->car_name}}</span></td>
+                                          <td><span class="d-lg-none d-sm-block">Pick Up Location</span>{{$item->pickuplocation}}</td>
+                                          <td><span class="d-lg-none d-sm-block">Drop Off Location</span>{{$item->dropofflocation}}</td>
+                                          <td><span class="d-lg-none d-sm-block">Pick Up Date</span>{{$item->pickup_date}}</td>
+                                          <td><span class="d-lg-none d-sm-block">Return Date</span>{{$item->return_date}}</td>
+                                          <td>
+                                         @if ($item->status === 'scheduled')
+                                         <div class="badge rounded-pill bg-warning">{{$item->status}}</div>
+                                         @elseif($item->status === 'cancelled')
+                                         <div class="badge rounded-pill bg-danger">{{$item->status}}</div>
+                                         @else
+                                         <div class="badge rounded-pill bg-success">{{$item->status}}</div>
+                                         @endif
+                                          </td>
+                                        </tr>
+                                        @endforeach 
+              
+                                      </tbody>
                                 </table>
                         </div>
                     </div>

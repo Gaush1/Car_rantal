@@ -32,4 +32,9 @@ class Companye extends Authenticatable
         'remember_token',
     ];
 
+    public function companybooking()
+    {
+        return $this->hasMany(Companybooking::class);
+    }
+
 }

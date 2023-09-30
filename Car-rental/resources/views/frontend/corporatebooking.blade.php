@@ -101,7 +101,7 @@
 
                                         <div id="de-submenu-profile" class="de-submenu">
                                             <div class="d-name">
-                                                <h4>{{ Auth::guard('companye')->user()->name }}</h4>
+                                                <h4>{{ Auth::guard('companye')->user()->name}}</h4>
                                                 <span class="text-gray">{{ Auth::guard('companye')->user()->email }} </span>
                                             </div>
 
@@ -125,8 +125,8 @@
             </div>
         </header>
 
-        <!-- content begin -->
-        <div class="no-bottom no-top zebra" id="content">
+         <!-- content begin -->
+         <div class="no-bottom no-top zebra" id="content">
             <div id="top"></div>
             
             <!-- section begin -->
@@ -136,7 +136,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-									<h1>My Profile</h1>
+									<h1>My Orders</h1>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -152,11 +152,11 @@
                             <div class="card p-4 rounded-5">
                                 <div class="profile_avatar">
                                     <div class="profile_img">
-                                        <img src="{{url("frontend/images/profile/1.jpg")}}" alt="">
+                                        <img src="{{url('frontend/images/profile/1.jpg')}}" alt="">
                                     </div>
                                     <div class="profile_name">
                                         <h4>
-                                            {{Auth::guard('companye')->user()->name}}                                                
+                                            {{ Auth::guard('companye')->user()->name}}                                               
                                             <span class="profile_username text-gray">{{ Auth::guard('companye')->user()->email }}</span>
                                         </h4>
                                     </div>
@@ -164,83 +164,65 @@
                                 <div class="spacer-20"></div>
                                 <ul class="menu-col">
                                     <li><a href="{{url('/dashbord/company')}}"><i class="fa fa-home"></i>Dashboard</a></li>
-                                    <li><a href="{{route('company.profile.edit')}}" class="active"><i class="fa fa-user"></i>My Profile</a></li>
-                                    <li><a href="{{route('company.profile.booking')}}"><i class="fa fa-calendar"></i>My Orders</a></li>
-                                    <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+                                    <li><a href="{{route('company.profile.edit')}}"><i class="fa fa-user"></i>My Profile</a></li>
+                                    <li><a href="{{route('company.profile.booking')}}" class="active"><i class="fa fa-calendar"></i>My Orders</a></li>
+                                    {{-- <li><a href="account-favorite.html"><i class="fa fa-car"></i>My Favorite Cars</a></li> --}}
+                                    <li><a href="{{route('logout_company')}}"><i class="fa fa-sign-out"></i>Sign Out</a></li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="col-lg-9">
-                            <div class="card p-4  rounded-5">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <form id="form-create-item" class="form-border" method="post" action="{{route('company.profile.update')}}">
-                                            @csrf
-                                        <div class="de_tab tab_simple">
-                                        
-                                            <ul class="de_nav">
-                                                <li class="active"><span>Profile</span></li>
-                                            </ul>
-                                            
-                                            <div class="de_tab_content">                            
-                                                <div class="tab-1">
+                          <div class="card p-4 rounded-5 mb25">
+                        @foreach ($bookedCars as $item)
+                          @if ($item->status === 'scheduled')
+                          
+                            <h4>Scheduled Orders</h4>
+                          @elseif ($item->status === 'cancelled')
+                         
+                              <h4>Cancelled Orders</h4>
+                          @elseif ($item->status === 'completed')
+                         
+                              <h4>Completed Orders</h4>
+                          @endif
+                         
 
-                                                    <div class="row">
-                                                        <div class="col-lg-6 mb20">
-                                                            <h5>Name</h5>
-                                                            <input type="text" name="name" id="username" class="form-control" placeholder="Enter name" />
-                                                        </div>
-                                                        <div class="col-lg-6 mb20">
-                                                            <h5>Email Address</h5>
-                                                            <input type="text" name="email" id="email_address" class="form-control" placeholder="Enter email" />
-                                                        </div>
-                                                        <div class="col-lg-6 mb20">
-                                                            <h5>Username</h5>
-                                                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter username" />
-                                                        </div>
-                                                        <div class="col-lg-6 mb20">
-                                                            <h5>Phone No.</h5>
-                                                            <input type="text" name="phone" id="username" class="form-control" placeholder="Enter username" />
-                                                        </div>
-                                                        <div class="col-lg-6 mb20">
-                                                            <h5>New Password</h5>
-                                                            <input type="Password" name="password" id="user_password" class="form-control" placeholder="********" />
-                                                        </div>
-                                                        <div class="col-lg-6 mb20">
-                                                            <h5>Re-enter Password</h5>
-                                                            <input type="Password" name="re-password" id="user_password_re-enter" class="form-control" placeholder="********" />
-                                                        </div>
-                                                        <div class="col-lg-6 mb20">
-                                                            <h5>Company Name</h5>
-                                                            <input type="text" name="cname" id="username" class="form-control" placeholder="Enter username" />
-                                                        </div>
-                                                        <div class="col-lg-6 mb20">
-                                                            <h5>Company City</h5>
-                                                            <input type="text" name="city" id="username" class="form-control" placeholder="Enter username" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <input type="submit" id="submit" class="btn-main" value="Update profile">
-                                        </form>
-                                        @if (session('success'))
-                                          <div class="alert alert-success">
-                                             {{ session('success') }}
-                                          </div>
-                                        @endif
-                                        @if (session('error'))
-                                          <div class="alert alert-danger">
-                                             {{ session('error') }}
-                                          </div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                              <table class="table de-table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col"><span class="text-uppercase fs-12 text-gray">Order ID</span></th>
+                                    <th scope="col"><span class="text-uppercase fs-12 text-gray">Car Name</span></th>
+                                    <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick Up Location</span></th>
+                                    <th scope="col"><span class="text-uppercase fs-12 text-gray">Drop Off Location</span></th>
+                                    <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick Up Date</span></th>
+                                    <th scope="col"><span class="text-uppercase fs-12 text-gray">Return Date</span></th>
+                                    <th scope="col"><span class="text-uppercase fs-12 text-gray">Status</span></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                 
+                                  <tr>
+                                    <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#{{$item->id}}</div></td>
+                                    <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">{{$item->car_name}}</span></td>
+                                    <td><span class="d-lg-none d-sm-block">Pick Up Location</span>{{$item->pickuplocation}}</td>
+                                    <td><span class="d-lg-none d-sm-block">Drop Off Location</span>{{$item->dropofflocation}}</td>
+                                    <td><span class="d-lg-none d-sm-block">Pick Up Date</span>{{$item->pickup_date}}</td>
+                                    <td><span class="d-lg-none d-sm-block">Return Date</span>{{$item->return_date}}</td>
+                                    <td>
+                                      @if ($item->status === 'scheduled')
+                                          <div class="badge rounded-pill bg-warning">{{$item->status}}</div>
+                                      @elseif ($item->status === 'cancelled')
+                                          <div class="badge rounded-pill bg-danger">{{$item->status}}</div>
+                                      @elseif ($item->status === 'completed')
+                                          <div class="badge rounded-pill bg-success">{{$item->status}}</div>
+                                      @endif
+                                  </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              @endforeach
+                          </div>
+                       
                     </div>
                 </div>
             </section>
