@@ -225,134 +225,232 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
 
+                        <div class="col-lg-9">
 
-                            <div class="col-lg-9">
+                            <div class="card p-4 rounded-5 mb25">
+                                <h4>Company Table</h4>
 
-                                <div class="card p-4 rounded-5 mb25">
-                                    <h4>Company Table</h4>
-
-                                    <table class="table de-table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col"><span class="text-uppercase fs-12 text-gray">
+                                <table class="table de-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">
                                                     Comany ID</span></th>
-                                                <th scope="col"><span
-                                                        class="text-uppercase fs-12 text-gray">Name of User</span></th>
-                                                <th scope="col"><span class="text-uppercase fs-12 text-gray">
-                                                        Email Address</span></th>
-                                                <th scope="col"><span class="text-uppercase fs-12 text-gray">
-                                                        Username</span></th>
-                                                <th scope="col"><span class="text-uppercase fs-12 text-gray">Phone
-                                                        No.</span></th>
-                                                <th scope="col"><span
-                                                        class="text-uppercase fs-12 text-gray">Company Name</span></th>
-                                                <th scope="col"><span
-                                                        class="text-uppercase fs-12 text-gray">Company City</span></th>
-                                                <th scope="col"><span
-                                                        class="text-uppercase fs-12 text-gray">status</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Name
+                                                    of User</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">
+                                                    Email Address</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">
+                                                    Username</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Phone
+                                                    No.</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Company
+                                                    Name</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Company
+                                                    City</span></th>
+                                            <th scope="col"><span
+                                                    class="text-uppercase fs-12 text-gray">status</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($companyes as $items)
+                                            <tr>
+                                                <td><span class="d-lg-none d-sm-block">Comany ID</span>
+                                                    <div class="badge bg-gray-100 text-dark">{{ $items->id }}
+                                                    </div>
+                                                </td>
+                                                <td><span class="d-lg-none d-sm-block">Name</span><span
+                                                        class="bold">{{ $items->name }}</span></td>
+
+                                                <td><span class="d-lg-none d-sm-block">Email</span><span
+                                                        class="bold">{{ $items->email }}</span></td>
+                                                <td><span class="d-lg-none d-sm-block">Username</span
+                                                        class="bold">{{ $items->username }}</td>
+                                                <td><span class="d-lg-none d-sm-block">Phone No.</span
+                                                        class="bold">{{ $items->phone }}</td>
+                                                <td><span class="d-lg-none d-sm-block">Company Name</span><span
+                                                        class="bold">{{ $items->cname }}</span></td>
+                                                <td><span class="d-lg-none d-sm-block">Company City</span><span
+                                                        class="bold">{{ $items->city }}</span></td>
+                                                <td>
+                                                    @if ($items->status === 'active')
+                                                        <div class="badge rounded-pill bg-success">
+                                                            {{ $items->status }}</div>
+                                                    @else
+                                                        <div class="badge rounded-pill bg-danger">
+                                                            {{ $items->status }}</div>
+                                                    @endif
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($companyes as $items)
-                                                <tr>
-                                                    <td><span class="d-lg-none d-sm-block">Comany ID</span>
-                                                        <div class="badge bg-gray-100 text-dark">{{ $items->id }}
-                                                        </div>
-                                                    </td>
-                                                    <td><span class="d-lg-none d-sm-block">Name</span><span
-                                                            class="bold">{{ $items->name }}</span></td>
-                                                            
-                                                    <td><span class="d-lg-none d-sm-block">Email</span><span
-                                                            class="bold">{{ $items->email }}</span></td>
-                                                    <td><span class="d-lg-none d-sm-block">Username</span
-                                                            class="bold">{{ $items->username }}</td>
-                                                    <td><span class="d-lg-none d-sm-block">Phone No.</span
-                                                            class="bold">{{ $items->phone }}</td>
-                                                    <td><span class="d-lg-none d-sm-block">Company Name</span><span
-                                                            class="bold">{{ $items->cname }}</span></td>
-                                                    <td><span class="d-lg-none d-sm-block">Company City</span><span
-                                                            class="bold">{{ $items->city }}</span></td>
-                                                    <td>
-                                                        @if ($items->status === 'active')
-                                                            <div class="badge rounded-pill bg-success">
-                                                                {{ $items->status }}</div>
-                                                        @else
-                                                            <div class="badge rounded-pill bg-danger">
-                                                                {{ $items->status }}</div>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="col-lg-9">
-
-                                    <div class="card p-4 rounded-5 mb25">
-                                        <h4>Bookings Table</h4>
-
-                                        <table class="table de-table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col"><span
-                                                            class="text-uppercase fs-12 text-gray">Order ID</span></th>
-                                                    <th scope="col"><span
-                                                            class="text-uppercase fs-12 text-gray">Car Name</span></th>
-                                                    <th scope="col"><span
-                                                            class="text-uppercase fs-12 text-gray">Pick Up
-                                                            Location</span></th>
-                                                    <th scope="col"><span
-                                                            class="text-uppercase fs-12 text-gray">Drop Off
-                                                            Location</span></th>
-                                                    <th scope="col"><span
-                                                            class="text-uppercase fs-12 text-gray">Pick Up Date</span>
-                                                    </th>
-                                                    <th scope="col"><span
-                                                            class="text-uppercase fs-12 text-gray">Return Date</span>
-                                                    </th>
-                                                    <th scope="col"><span
-                                                            class="text-uppercase fs-12 text-gray">Status</span></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($bookings as $item)
-                                                    <tr>
-                                                        <td><span class="d-lg-none d-sm-block">Order ID</span>
-                                                            <div class="badge bg-gray-100 text-dark">
-                                                                #{{ $item->id }}</div>
-                                                        </td>
-                                                        <td><span class="d-lg-none d-sm-block">Car Name</span><span
-                                                                class="bold">{{ $item->car_name }}</span></td>
-                                                        <td><span class="d-lg-none d-sm-block">Pick Up
-                                                                Location</span>{{ $item->pickuplocation }}</td>
-                                                        <td><span class="d-lg-none d-sm-block">Drop Off
-                                                                Location</span>{{ $item->dropofflocation }}</td>
-                                                        <td><span class="d-lg-none d-sm-block">Pick Up
-                                                                Date</span>{{ $item->pickup_date }}</td>
-                                                        <td><span class="d-lg-none d-sm-block">Return
-                                                                Date</span>{{ $item->return_date }}</td>
-                                                        <td>
-                                                            @if ($item->status === 'scheduled')
-                                                                <div class="badge rounded-pill bg-warning">
-                                                                    {{ $item->status }}</div>
-                                                            @elseif($item->status === 'cancelled')
-                                                                <div class="badge rounded-pill bg-danger">
-                                                                    {{ $item->status }}</div>
-                                                            @else
-                                                                <div class="badge rounded-pill bg-success">
-                                                                    {{ $item->status }}</div>
-                                                            @endif
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
+                        </div>
+
+                        <div class="col-lg-9" style="width: 95%">
+
+                            <div class="card p-4 rounded-5 mb25">
+                                <h4>Bookings Table</h4>
+
+                                <table class="table de-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Order
+                                                    ID</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">User
+                                                    ID</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Car
+                                                    ID</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Car
+                                                    Name</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Car
+                                                    Price</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick
+                                                    Up
+                                                    Location</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Drop
+                                                    Off
+                                                    Location</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick
+                                                    Up Date</span>
+                                            </th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Return
+                                                    Date</span>
+                                            </th>
+                                            <th scope="col"><span
+                                                    class="text-uppercase fs-12 text-gray">Status</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($bookings as $item)
+                                            <tr>
+                                                <td><span class="d-lg-none d-sm-block">Order ID</span>
+                                                    <div class="badge bg-gray-100 text-dark">
+                                                        #{{ $item->id }}</div>
+                                                </td>
+                                                <td><span class="d-lg-none d-sm-block">User ID</span>
+                                                    <div class="badge bg-gray-100 text-dark">
+                                                        #{{ $item->user_id }}</div>
+                                                </td>
+                                                <td><span class="d-lg-none d-sm-block">Car ID</span>
+                                                    <div class="badge bg-gray-100 text-dark">
+                                                        #{{ $item->car_id }}</div>
+                                                </td>
+                                                <td><span class="d-lg-none d-sm-block">Car Name</span><span
+                                                        class="bold">{{ $item->car_name }}</span></td>
+                                                <td><span class="d-lg-none d-sm-block">Car Price</span><span
+                                                        class="bold">{{ $item->total_price }}</span></td>
+                                                <td><span class="d-lg-none d-sm-block">Pick Up
+                                                        Location</span>{{ $item->pickuplocation }}</td>
+                                                <td><span class="d-lg-none d-sm-block">Drop Off
+                                                        Location</span>{{ $item->dropofflocation }}</td>
+                                                <td><span class="d-lg-none d-sm-block">Pick Up
+                                                        Date</span>{{ $item->pickup_date }}</td>
+                                                <td><span class="d-lg-none d-sm-block">Return
+                                                        Date</span>{{ $item->return_date }}</td>
+                                                <td>
+                                                    @if ($item->status === 'scheduled')
+                                                        <div class="badge rounded-pill bg-warning">
+                                                            {{ $item->status }}</div>
+                                                    @elseif($item->status === 'cancelled')
+                                                        <div class="badge rounded-pill bg-danger">
+                                                            {{ $item->status }}</div>
+                                                    @else
+                                                        <div class="badge rounded-pill bg-success">
+                                                            {{ $item->status }}</div>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-9" style="width: 95%">
+
+                            <div class="card p-4 rounded-5 mb25">
+                                <h4>Company Bookings Table</h4>
+
+                                <table class="table de-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Order
+                                                    ID</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Company
+                                                    ID</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Car
+                                                    ID</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Car
+                                                    Name</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Car
+                                                    Price</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick
+                                                    Up
+                                                    Location</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Drop
+                                                    Off
+                                                    Location</span></th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Pick
+                                                    Up Date</span>
+                                            </th>
+                                            <th scope="col"><span class="text-uppercase fs-12 text-gray">Return
+                                                    Date</span>
+                                            </th>
+                                            <th scope="col"><span
+                                                    class="text-uppercase fs-12 text-gray">Status</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($bookingcompany as $item)
+                                            <tr>
+                                                <td><span class="d-lg-none d-sm-block">Order ID</span>
+                                                    <div class="badge bg-gray-100 text-dark">
+                                                        #{{ $item->id }}</div>
+                                                </td>
+                                                <td><span class="d-lg-none d-sm-block">Companye ID</span>
+                                                    <div class="badge bg-gray-100 text-dark">
+                                                        #{{ $item->companye_id }}</div>
+                                                </td>
+                                                <td><span class="d-lg-none d-sm-block">Car ID</span>
+                                                    <div class="badge bg-gray-100 text-dark">
+                                                        #{{ $item->car_id }}</div>
+                                                </td>
+                                                <td><span class="d-lg-none d-sm-block">Car Name</span><span
+                                                        class="bold">{{ $item->car_name }}</span></td>
+                                                <td><span class="d-lg-none d-sm-block">Car Price</span><span
+                                                        class="bold">{{ $item->total_price }}</span></td>
+                                                <td><span class="d-lg-none d-sm-block">Pick Up
+                                                        Location</span>{{ $item->pickuplocation }}</td>
+                                                <td><span class="d-lg-none d-sm-block">Drop Off
+                                                        Location</span>{{ $item->dropofflocation }}</td>
+                                                <td><span class="d-lg-none d-sm-block">Pick Up
+                                                        Date</span>{{ $item->pickup_date }}</td>
+                                                <td><span class="d-lg-none d-sm-block">Return
+                                                        Date</span>{{ $item->return_date }}</td>
+                                                <td>
+                                                    @if ($item->status === 'scheduled')
+                                                        <div class="badge rounded-pill bg-warning">
+                                                            {{ $item->status }}</div>
+                                                    @elseif($item->status === 'cancelled')
+                                                        <div class="badge rounded-pill bg-danger">
+                                                            {{ $item->status }}</div>
+                                                    @else
+                                                        <div class="badge rounded-pill bg-success">
+                                                            {{ $item->status }}</div>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
             </section>
 
 
