@@ -4,9 +4,7 @@
 
 ## Video
 <p align="center">
-<video controls>  
-  <source src="https://www.dropbox.com/preview/Car-rental/Car-rental.mp4?context=content_suggestions&role=personal" type="video/mp4">    
-</video>
+<i src="https://www.dropbox.com/preview/Car-rental/Car-rental.mp4?context=content_suggestions&role=personal">Video</i>i>
 </p>
 
 ## Project Background
