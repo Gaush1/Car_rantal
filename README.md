@@ -2,6 +2,13 @@
 --------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 
+## Video
+<p align="center">
+<video controls>  
+  <source src="video/Car-rental.mp4" type="video/mp4">    
+</video>
+</p>
+
 ## Project Background
 
 This car rental web application is the result of my internship assessment project. I received guidance during the development process, and I tailored the application based on my own insights and expertise. It's designed to offer enhanced functionality and a user-centric experience.
