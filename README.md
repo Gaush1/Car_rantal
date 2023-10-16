@@ -3,9 +3,7 @@
 --------------------------------------------------------------------------------------------------
 
 ## Video
-<p align="center">
-<i src="https://www.dropbox.com/preview/Car-rental/Car-rental.mp4?context=content_suggestions&role=personal">Video</i>
-</p>
+<a href="https://www.dropbox.com/preview/Car-rental/Car-rental.mp4?context=content_suggestions&role=personal">Video Demonstration</a>
 
 ## Project Background
 
